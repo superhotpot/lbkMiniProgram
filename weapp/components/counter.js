@@ -1,10 +1,10 @@
 "use strict";
 
-var _core = _interopRequireDefault(require('../vendor.js')(1));
+var _core = _interopRequireDefault(require('../vendor.js')(0));
 
 var _store = _interopRequireDefault(require('../store/index.js'));
 
-var _redux = require('../vendor.js')(0);
+var _redux = require('../vendor.js')(1);
 
 var _types = require('../store/types/index.js');
 

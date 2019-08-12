@@ -11,5 +11,7 @@
 	"appid": "touristappid",
 	"projectname": "lbk_app",
 	"miniprogramRoot": "weapp/",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {}
 }

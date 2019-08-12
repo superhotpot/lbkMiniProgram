@@ -2,11 +2,11 @@
 
 var _regeneratorRuntime2 = _interopRequireDefault(require('vendor.js')(3));
 
-var _core = _interopRequireDefault(require('vendor.js')(1));
+var _core = _interopRequireDefault(require('vendor.js')(0));
 
 var _eventHub = _interopRequireDefault(require('common/eventHub.js'));
 
-var _redux = _interopRequireDefault(require('vendor.js')(0));
+var _redux = _interopRequireDefault(require('vendor.js')(1));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

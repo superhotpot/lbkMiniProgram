@@ -34,116 +34,7 @@ var process = { env: {} };
    return __wepy_require;
 })([
 /***** module 0 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/@wepy/redux/dist/index.js *****/
-function(module, exports, __wepy_require) {'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-function normalizeMap (map) {
-  if (typeof map === 'string')
-    { map = [ map ]; }
-  return Array.isArray(map)
-    ?  map.map(function (k) { return ({ key: k, val: k }); })
-    : Object.keys(map).map(function (k) { return ({ key: k, val: map[k] }); });
-}
-
-var mapState = function (states) {
-  var res = {};
-  normalizeMap(states).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    res[key] = function mappedState() {
-      if (!this.$store) {
-        console.warn(("[@wepy/redux] state \"" + key + "\" do not work, if store is not defined."));
-        return;
-      }
-      var state = this.$store.getState();
-      return typeof val === 'function'
-        ?  val.call(this, state)
-        : state[val];
-    };
-    res[key].redux = true;
-  });
-  return res;
-};
-
-var mapActions = function (actions) {
-  var res = {};
-  normalizeMap(actions).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    res[key] = function mappedAction() {
-      var args = [], len = arguments.length;
-      while ( len-- ) args[ len ] = arguments[ len ];
-
-      if (!this.$store) {
-        console.warn(("[@wepy/redux] action \"" + key + "\" do not work, if store is not defined."));
-        return;
-      }
-      var dispatchParam;
-      if (typeof val === 'string') {
-        dispatchParam = {
-          type: val,
-          payload: args.length > 1 ? args : args[0]
-        };
-      } else {
-        dispatchParam = typeof val === 'function' ? val.apply(this.$store, args) : val;
-      }
-      return this.$store.dispatch(dispatchParam);
-    };
-  });
-  return res;
-};
-
-function wepyInstall (wepy) {
-  wepy.mixin({
-    beforeCreate: function beforeCreate () {
-      var options = this.$options;
-      if (options.store) {
-        this.$store = typeof options.store === 'function'
-          ? options.store()
-          : options.store;
-      } else if (options.parent && options.parent.$store) {
-        this.$store = options.parent.$store;
-      }
-    },
-    created: function created () {
-      var this$1 = this;
-
-      var store = this.$store;
-      if (store) {
-        var computed = this.$options.computed;
-        store.subscribe(function () {
-          for (var k in computed) {
-            if (computed[k].redux) {
-              // Set the key to dirty
-              this$1._computedWatchers[k].evaluate();
-              // Force render
-              this$1.$forceUpdate();
-            }
-          }
-        });
-      }
-    }
-  });
-}
-
-var index = {
-  install: wepyInstall,
-  version: "2.0.0"
-};
-
-exports.default = index;
-exports.mapState = mapState;
-exports.mapActions = mapActions;
-
-},/***** module 0 end *****/
-
-
-/***** module 1 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/@wepy/core/dist/wepy.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/@wepy/core/dist/wepy.js *****/
 function(module, exports, __wepy_require) {'use strict';
 
 // can we use __proto__?
@@ -2696,11 +2587,120 @@ wepy.version = "2.0.0-alpha.8";
 
 module.exports = wepy;
 
+},/***** module 0 end *****/
+
+
+/***** module 1 start *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/@wepy/redux/dist/index.js *****/
+function(module, exports, __wepy_require) {'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function normalizeMap (map) {
+  if (typeof map === 'string')
+    { map = [ map ]; }
+  return Array.isArray(map)
+    ?  map.map(function (k) { return ({ key: k, val: k }); })
+    : Object.keys(map).map(function (k) { return ({ key: k, val: map[k] }); });
+}
+
+var mapState = function (states) {
+  var res = {};
+  normalizeMap(states).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedState() {
+      if (!this.$store) {
+        console.warn(("[@wepy/redux] state \"" + key + "\" do not work, if store is not defined."));
+        return;
+      }
+      var state = this.$store.getState();
+      return typeof val === 'function'
+        ?  val.call(this, state)
+        : state[val];
+    };
+    res[key].redux = true;
+  });
+  return res;
+};
+
+var mapActions = function (actions) {
+  var res = {};
+  normalizeMap(actions).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedAction() {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      if (!this.$store) {
+        console.warn(("[@wepy/redux] action \"" + key + "\" do not work, if store is not defined."));
+        return;
+      }
+      var dispatchParam;
+      if (typeof val === 'string') {
+        dispatchParam = {
+          type: val,
+          payload: args.length > 1 ? args : args[0]
+        };
+      } else {
+        dispatchParam = typeof val === 'function' ? val.apply(this.$store, args) : val;
+      }
+      return this.$store.dispatch(dispatchParam);
+    };
+  });
+  return res;
+};
+
+function wepyInstall (wepy) {
+  wepy.mixin({
+    beforeCreate: function beforeCreate () {
+      var options = this.$options;
+      if (options.store) {
+        this.$store = typeof options.store === 'function'
+          ? options.store()
+          : options.store;
+      } else if (options.parent && options.parent.$store) {
+        this.$store = options.parent.$store;
+      }
+    },
+    created: function created () {
+      var this$1 = this;
+
+      var store = this.$store;
+      if (store) {
+        var computed = this.$options.computed;
+        store.subscribe(function () {
+          for (var k in computed) {
+            if (computed[k].redux) {
+              // Set the key to dirty
+              this$1._computedWatchers[k].evaluate();
+              // Force render
+              this$1.$forceUpdate();
+            }
+          }
+        });
+      }
+    }
+  });
+}
+
+var index = {
+  install: wepyInstall,
+  version: "2.0.0"
+};
+
+exports.default = index;
+exports.mapState = mapState;
+exports.mapActions = mapActions;
+
 },/***** module 1 end *****/
 
 
 /***** module 2 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/regenerator-runtime/runtime.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/regenerator-runtime/runtime.js *****/
 function(module, exports, __wepy_require) {/**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -3433,7 +3433,7 @@ function(module, exports, __wepy_require) {/**
 
 
 /***** module 3 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/regenerator-runtime/runtime-module.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/regenerator-runtime/runtime-module.js *****/
 function(module, exports, __wepy_require) {/**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -3474,7 +3474,7 @@ if (hadRuntime) {
 
 
 /***** module 4 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/is-promise/index.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/is-promise/index.js *****/
 function(module, exports, __wepy_require) {module.exports = isPromise;
 
 function isPromise(obj) {
@@ -3485,7 +3485,7 @@ function isPromise(obj) {
 
 
 /***** module 5 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/symbol-observable/lib/ponyfill.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/symbol-observable/lib/ponyfill.js *****/
 function(module, exports, __wepy_require) {'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3513,7 +3513,7 @@ function symbolObservablePonyfill(root) {
 
 
 /***** module 6 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/symbol-observable/lib/index.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/symbol-observable/lib/index.js *****/
 function(module, exports, __wepy_require) {'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3547,7 +3547,7 @@ exports['default'] = result;
 
 
 /***** module 7 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux/lib/redux.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux/lib/redux.js *****/
 function(module, exports, __wepy_require) {'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -4225,7 +4225,7 @@ exports.createStore = createStore;
 
 
 /***** module 8 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/constants.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/constants.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4238,7 +4238,7 @@ exports.ACTION_TYPE_DELIMITER = ACTION_TYPE_DELIMITER;
 
 
 /***** module 9 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/isFunction.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/isFunction.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4253,7 +4253,7 @@ exports.default = _default;
 
 
 /***** module 10 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/isSymbol.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/isSymbol.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4268,7 +4268,7 @@ exports.default = _default;
 
 
 /***** module 11 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/isEmpty.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/isEmpty.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4283,7 +4283,7 @@ exports.default = _default;
 
 
 /***** module 12 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/toString.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/toString.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4298,7 +4298,7 @@ exports.default = _default;
 
 
 /***** module 13 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/isString.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/isString.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4313,7 +4313,7 @@ exports.default = _default;
 
 
 /***** module 14 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/identity.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/identity.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4328,7 +4328,7 @@ exports.default = _default;
 
 
 /***** module 15 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/isNull.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/isNull.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4343,7 +4343,7 @@ exports.default = _default;
 
 
 /***** module 16 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/isPlainObject.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/isPlainObject.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4365,7 +4365,7 @@ exports.default = _default;
 
 
 /***** module 17 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/isArray.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/isArray.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4380,7 +4380,7 @@ exports.default = _default;
 
 
 /***** module 18 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/isNil.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/isNil.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4395,7 +4395,7 @@ exports.default = _default;
 
 
 /***** module 19 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/getLastElement.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/getLastElement.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4410,7 +4410,7 @@ exports.default = _default;
 
 
 /***** module 20 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/arrayToObject.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/arrayToObject.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4427,7 +4427,7 @@ exports.default = _default;
 
 
 /***** module 21 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/unflattenActionCreators.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/unflattenActionCreators.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4472,7 +4472,7 @@ function unflattenActionCreators(flatActionCreators, _temp) {
 
 
 /***** module 22 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/isUndefined.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/isUndefined.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4487,7 +4487,7 @@ exports.default = _default;
 
 
 /***** module 23 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/isMap.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/isMap.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4502,7 +4502,7 @@ exports.default = _default;
 
 
 /***** module 24 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/ownKeys.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/ownKeys.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4540,7 +4540,7 @@ function ownKeys(object) {
 
 
 /***** module 25 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/get.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/get.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4557,7 +4557,7 @@ function get(key, x) {
 
 
 /***** module 26 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/flattenWhenNode.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/flattenWhenNode.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4629,7 +4629,7 @@ exports.default = _default;
 
 
 /***** module 27 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/flattenActionMap.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/flattenActionMap.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4648,7 +4648,7 @@ exports.default = _default;
 
 
 /***** module 28 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/hasGeneratorInterface.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/hasGeneratorInterface.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4669,7 +4669,7 @@ function hasGeneratorInterface(handler) {
 
 
 /***** module 29 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/flattenReducerMap.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/flattenReducerMap.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -4694,7 +4694,7 @@ exports.default = _default;
 
 
 /***** module 30 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/lodash/lodash.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/lodash/lodash.js *****/
 function(module, exports, __wepy_require) {/**
  * @license
  * Lodash <https://lodash.com/>
@@ -21812,7 +21812,7 @@ function(module, exports, __wepy_require) {/**
 
 
 /***** module 31 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/flux-standard-action/lib/index.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/flux-standard-action/lib/index.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21838,7 +21838,7 @@ function isValidKey(key) {
 
 
 /***** module 32 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-promise/lib/index.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-promise/lib/index.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21882,13 +21882,80 @@ function promiseMiddleware(_ref) {
 
 
 /***** module 33 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/createAction.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/just-curry-it/index.js *****/
+function(module, exports, __wepy_require) {module.exports = curry;
+
+/*
+  function add(a, b, c) {
+    return a + b + c;
+  }
+  curry(add)(1)(2)(3); // 6
+  curry(add)(1)(2)(2); // 5
+  curry(add)(2)(4, 3); // 9
+
+  function add(...args) {
+    return args.reduce((sum, n) => sum + n, 0)
+  }
+  var curryAdd4 = curry(add, 4)
+  curryAdd4(1)(2, 3)(4); // 10
+
+  function converter(ratio, input) {
+    return (input*ratio).toFixed(1);
+  }
+  const curriedConverter = curry(converter)
+  const milesToKm = curriedConverter(1.62);
+  milesToKm(35); // 56.7
+  milesToKm(10); // 16.2
+*/
+
+function curry(fn, arity) {
+  return function curried() {
+    if (arity == null) {
+      arity = fn.length;
+    }
+    var args = [].slice.call(arguments);
+    if (args.length >= arity) {
+      return fn.apply(this, args);
+    } else {
+      return function() {
+        return curried.apply(this, args.concat([].slice.call(arguments)));
+      };
+    }
+  };
+}
+
+},/***** module 33 end *****/
+
+
+/***** module 34 start *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/createCurriedAction.js *****/
+function(module, exports, __wepy_require) {"use strict";
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _justCurryIt = _interopRequireDefault(__wepy_require(33));
+
+var _createAction = _interopRequireDefault(__wepy_require(35));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = function _default(type, payloadCreator) {
+  return (0, _justCurryIt.default)((0, _createAction.default)(type, payloadCreator), payloadCreator.length);
+};
+
+exports.default = _default;
+},/***** module 34 end *****/
+
+
+/***** module 35 start *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/createAction.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
 exports.default = createAction;
 
-var _invariant = _interopRequireDefault(__wepy_require(35));
+var _invariant = _interopRequireDefault(__wepy_require(37));
 
 var _isFunction = _interopRequireDefault(__wepy_require(9));
 
@@ -21941,17 +22008,17 @@ function createAction(type, payloadCreator, metaCreator) {
 
   return actionCreator;
 }
-},/***** module 33 end *****/
+},/***** module 35 end *****/
 
 
-/***** module 34 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/handleAction.js *****/
+/***** module 36 start *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/handleAction.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
 exports.default = handleAction;
 
-var _invariant = _interopRequireDefault(__wepy_require(35));
+var _invariant = _interopRequireDefault(__wepy_require(37));
 
 var _isFunction = _interopRequireDefault(__wepy_require(9));
 
@@ -21998,11 +22065,11 @@ function handleAction(type, reducer, defaultState) {
     return (action.error === true ? throwReducer : nextReducer)(state, action);
   };
 }
-},/***** module 34 end *****/
+},/***** module 36 end *****/
 
 
-/***** module 35 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/invariant/invariant.js *****/
+/***** module 37 start *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/invariant/invariant.js *****/
 function(module, exports, __wepy_require) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -22055,17 +22122,17 @@ var invariant = function(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 
-},/***** module 35 end *****/
+},/***** module 37 end *****/
 
 
-/***** module 36 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/combineActions.js *****/
+/***** module 38 start *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/combineActions.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
 exports.default = combineActions;
 
-var _invariant = _interopRequireDefault(__wepy_require(35));
+var _invariant = _interopRequireDefault(__wepy_require(37));
 
 var _isFunction = _interopRequireDefault(__wepy_require(9));
 
@@ -22106,78 +22173,11 @@ function combineActions() {
     }
   };
 }
-},/***** module 36 end *****/
-
-
-/***** module 37 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/just-curry-it/index.js *****/
-function(module, exports, __wepy_require) {module.exports = curry;
-
-/*
-  function add(a, b, c) {
-    return a + b + c;
-  }
-  curry(add)(1)(2)(3); // 6
-  curry(add)(1)(2)(2); // 5
-  curry(add)(2)(4, 3); // 9
-
-  function add(...args) {
-    return args.reduce((sum, n) => sum + n, 0)
-  }
-  var curryAdd4 = curry(add, 4)
-  curryAdd4(1)(2, 3)(4); // 10
-
-  function converter(ratio, input) {
-    return (input*ratio).toFixed(1);
-  }
-  const curriedConverter = curry(converter)
-  const milesToKm = curriedConverter(1.62);
-  milesToKm(35); // 56.7
-  milesToKm(10); // 16.2
-*/
-
-function curry(fn, arity) {
-  return function curried() {
-    if (arity == null) {
-      arity = fn.length;
-    }
-    var args = [].slice.call(arguments);
-    if (args.length >= arity) {
-      return fn.apply(this, args);
-    } else {
-      return function() {
-        return curried.apply(this, args.concat([].slice.call(arguments)));
-      };
-    }
-  };
-}
-
-},/***** module 37 end *****/
-
-
-/***** module 38 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/createCurriedAction.js *****/
-function(module, exports, __wepy_require) {"use strict";
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _justCurryIt = _interopRequireDefault(__wepy_require(37));
-
-var _createAction = _interopRequireDefault(__wepy_require(33));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _default = function _default(type, payloadCreator) {
-  return (0, _justCurryIt.default)((0, _createAction.default)(type, payloadCreator), payloadCreator.length);
-};
-
-exports.default = _default;
 },/***** module 38 end *****/
 
 
 /***** module 39 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/reduce-reducers/lib/index.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/reduce-reducers/lib/index.js *****/
 function(module, exports, __wepy_require) {'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -22219,7 +22219,7 @@ module.exports = exports['default'];
 
 
 /***** module 40 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/handleActions.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/handleActions.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -22227,7 +22227,7 @@ exports.default = handleActions;
 
 var _reduceReducers = _interopRequireDefault(__wepy_require(39));
 
-var _invariant = _interopRequireDefault(__wepy_require(35));
+var _invariant = _interopRequireDefault(__wepy_require(37));
 
 var _isPlainObject = _interopRequireDefault(__wepy_require(16));
 
@@ -22237,7 +22237,7 @@ var _ownKeys = _interopRequireDefault(__wepy_require(24));
 
 var _flattenReducerMap = _interopRequireDefault(__wepy_require(29));
 
-var _handleAction = _interopRequireDefault(__wepy_require(34));
+var _handleAction = _interopRequireDefault(__wepy_require(36));
 
 var _get = _interopRequireDefault(__wepy_require(25));
 
@@ -22268,7 +22268,7 @@ function handleActions(handlers, defaultState, options) {
 
 
 /***** module 41 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/to-no-case/index.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/to-no-case/index.js *****/
 function(module, exports, __wepy_require) {
 /**
  * Export.
@@ -22341,7 +22341,7 @@ function uncamelize(string) {
 
 
 /***** module 42 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/to-space-case/index.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/to-space-case/index.js *****/
 function(module, exports, __wepy_require) {
 var clean = __wepy_require(41)
 
@@ -22368,7 +22368,7 @@ function toSpaceCase(string) {
 
 
 /***** module 43 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/to-camel-case/index.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/to-camel-case/index.js *****/
 function(module, exports, __wepy_require) {
 var space = __wepy_require(42)
 
@@ -22395,7 +22395,7 @@ function toCamelCase(string) {
 
 
 /***** module 44 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/utils/camelCase.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/utils/camelCase.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
@@ -22416,13 +22416,13 @@ exports.default = _default;
 
 
 /***** module 45 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/createActions.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/createActions.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
 exports.default = createActions;
 
-var _invariant = _interopRequireDefault(__wepy_require(35));
+var _invariant = _interopRequireDefault(__wepy_require(37));
 
 var _isPlainObject = _interopRequireDefault(__wepy_require(16));
 
@@ -22446,7 +22446,7 @@ var _flattenActionMap = _interopRequireDefault(__wepy_require(27));
 
 var _unflattenActionCreators = _interopRequireDefault(__wepy_require(21));
 
-var _createAction = _interopRequireDefault(__wepy_require(33));
+var _createAction = _interopRequireDefault(__wepy_require(35));
 
 var _constants = __wepy_require(8);
 
@@ -22526,16 +22526,16 @@ function actionCreatorsFromIdentityActions(identityActions, options) {
 
 
 /***** module 46 start *****/
-/***** /Users/june/code/superhotpot/lbkMiniProgram/node_modules/redux-actions/lib/index.js *****/
+/***** /Users/tanglang/myProgram/lbkMiniProgram/node_modules/redux-actions/lib/index.js *****/
 function(module, exports, __wepy_require) {"use strict";
 
 exports.__esModule = true;
 
-var _combineActions = _interopRequireDefault(__wepy_require(36));
+var _combineActions = _interopRequireDefault(__wepy_require(38));
 
 exports.combineActions = _combineActions.default;
 
-var _createAction = _interopRequireDefault(__wepy_require(33));
+var _createAction = _interopRequireDefault(__wepy_require(35));
 
 exports.createAction = _createAction.default;
 
@@ -22543,11 +22543,11 @@ var _createActions = _interopRequireDefault(__wepy_require(45));
 
 exports.createActions = _createActions.default;
 
-var _createCurriedAction = _interopRequireDefault(__wepy_require(38));
+var _createCurriedAction = _interopRequireDefault(__wepy_require(34));
 
 exports.createCurriedAction = _createCurriedAction.default;
 
-var _handleAction = _interopRequireDefault(__wepy_require(34));
+var _handleAction = _interopRequireDefault(__wepy_require(36));
 
 exports.handleAction = _handleAction.default;
 
