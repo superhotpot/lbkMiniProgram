@@ -1,0 +1,9 @@
+.topbar {
+  display: flex;
+  justify-content: space-between;
+}
+.topbar > view {
+  flex: 1;
+  text-align: center;
+}
+

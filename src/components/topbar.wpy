@@ -1,0 +1,42 @@
+<style lang="less">
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+  }
+  .topbar > view{
+    flex: 1;
+    text-align: center;
+  }
+</style>
+<template>
+<div class="topbar">
+  <div v-for="item in tabs">
+    <div class="topbar_item">{{item.title}}</div>
+  </div>
+</div>
+</template>
+
+<script>
+  import wepy from '@wepy/core'
+
+  wepy.component({
+    data: {
+      tabs: [
+        { id: 1,
+          title: '精选课程'
+        },
+        { id: 2,
+          title: '图形化编程'
+        },
+        { id: 1,
+          title: '计算机基础'
+        },
+      ]
+    },
+    methods: {
+      click() {
+
+      }
+    }
+  });
+</script>

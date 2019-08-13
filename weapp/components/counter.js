@@ -95,4 +95,74 @@ _core["default"].component({
         _vm.asyncInc($event)
       })();
     
+  }}}, models: {} }, {info: {"components":{},"on":{}}, handlers: {'59-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.plus($event)
+      })();
+    
+  }},'59-1': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.minus($event)
+      })();
+    
+  }},'59-2': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.increment($event)
+      })();
+    
+  }},'59-3': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.decrement($event)
+      })();
+    
+  }},'59-4': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.asyncInc($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{},"on":{}}, handlers: {'59-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.plus($event)
+      })();
+    
+  }},'59-1': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.minus($event)
+      })();
+    
+  }},'59-2': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.increment($event)
+      })();
+    
+  }},'59-3': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.decrement($event)
+      })();
+    
+  }},'59-4': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.asyncInc($event)
+      })();
+    
   }}}, models: {} });
