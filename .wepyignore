@@ -2,4 +2,3 @@ node_modules
 dist
 .DS_Store
 *.wpy___jb_tmp___
-weapp
