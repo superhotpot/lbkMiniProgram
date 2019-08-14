@@ -1,7 +1,0 @@
-{
-    "navigationBarTitleText": "编程小神通",
-    "component": true,
-    "usingComponents": {
-        "topbar": "../components/topbar"
-    }
-}
