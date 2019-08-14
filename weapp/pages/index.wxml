@@ -1,6 +1,0 @@
-
-<view class="container">
-  <view class="topbar">
-    <topbar bind_init="_initComponent"></topbar>
-  </view>
-</view>
