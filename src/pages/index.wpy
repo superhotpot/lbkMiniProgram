@@ -7,7 +7,7 @@
 <template>
   <div class="container">
     <div class="topbar">
-      <topbar></topbar>
+      <topbar v-bind:tabs="tabs" v-bind:value="currentTab"></topbar>
     </div>
   </div>
 </template>
@@ -24,6 +24,18 @@
       navigationBarTitleText: 'test'
     },
     data: {
+      currentTab: 1,
+      tabs: [
+        { id: 1,
+          title: '精选课程'
+        },
+        { id: 2,
+          title: '图形化编程'
+        },
+        { id: 3,
+          title: '计算机基础'
+        },
+      ]
     },
 
     methods: {
