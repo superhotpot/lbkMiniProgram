@@ -9,6 +9,9 @@
     <div class="topbar">
       <topbar v-bind:tabs="tabs" v-bind:value="currentTab"></topbar>
     </div>
+    <div>
+      <courseitem></courseitem>
+    </div>
   </div>
 </template>
 <script>
@@ -48,6 +51,7 @@
     navigationBarTitleText: '编程小神通',
     usingComponents: {
       topbar: '../components/topbar',
+      courseitem: '../components/courseitem',
     },
 }
 </config>
