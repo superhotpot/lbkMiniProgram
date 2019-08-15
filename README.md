@@ -13,4 +13,4 @@
 选择课程 -> 查看课程信息 -> 观看课程视频 -> 完成课后练习
 
 ## 主要界面截图
-![CutImg](https://s2.ax1x.com/2019/08/15/mVaKaV.png)
+![CutImg](https://s2.ax1x.com/2019/08/15/mVwljJ.jpg)
