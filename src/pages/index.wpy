@@ -2,12 +2,22 @@
   .topbar {
     width: 100%;
   }
+  .course-item {
+    height: 100px;
+  }
 </style>
 
 <template>
   <div class="container">
     <div class="topbar">
       <topbar v-bind:tabs="tabs" v-bind:value="currentTab"></topbar>
+    </div>
+    <div class="list">
+      <div v-for="item in courses_list">
+        <div class="course-item">
+          {{item}}
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -21,7 +31,10 @@
   wepy.page({
     store,
     config: {
-      navigationBarTitleText: 'test'
+      navigationBarTitleText: 'test',
+      navigationBarTitleText: '测试上拉下拉',
+      enablePullDownRefresh: true,
+      backgroundTextStyle: 'dark'
     },
     data: {
       currentTab: 1,
@@ -35,13 +48,30 @@
         { id: 3,
           title: '计算机基础'
         },
-      ]
+      ],
+      courses_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     },
 
     methods: {
     },
-
+    // onPullDownRefresh() {
+    //   console.log('下拉刷新列表')
+    //   setTimeout(function () {
+    //     wepy.stopPullDownRefresh()
+    //   }, 5000)
+    // },
+    onReachBottom() {
+      console.log('上拉加载下一页');
+      var arr = this.courses_list;
+      var index = this.courses_list.length;
+      for (let i = index + 1; i <= index + 10; i ++) {
+        console.log(i)
+        arr.push(i);
+      }
+      this.courses_list = arr.slice();
+    }
   });
+    
 </script>
 <config>
 {
