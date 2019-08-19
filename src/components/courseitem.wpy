@@ -2,10 +2,23 @@
 .courseitem {
     position: relative;
     width: 750rpx;
+    height: 208rpx;
     top: 80rpx;
+}
+.courseboard {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 208rpx;
+}
+.courseboard-line {
+    width:700rpx;
+    height:1px;
+    background:rgba(229,229,229,1);
 }
 .coursevideo {
     position:absolute;
+    top: 42rpx;
     left: 32rpx;
     width:261rpx;
     height:133rpx;
@@ -19,9 +32,10 @@
 .courseimg {
     width: 100%;
     height: 100%;
+    border-radius:6rpx;
 }
 .coursetitle {
-
+    top: 42rpx;
     height:48rpx;
     font-size:34rpx;
     font-family:PingFangSC-Regular;
@@ -30,7 +44,7 @@
     line-height:48rpx;
 }
 .coursedescript {
-    top:50rpx;
+    top:92rpx;
     width:377rpx;
     height:37rpx;
     font-size:26rpx;
@@ -40,7 +54,7 @@
     line-height:37rpx;
 }
 .coursetime {
-    top: 103rpx;
+    top: 145rpx;
     width:227rpx;
     height:37rpx;
     font-size:26rpx;
@@ -51,6 +65,7 @@
 }
 </style>
 <template>
+<div>
   <div class="courseitem">
     <div class="coursevideo">
         <img class="courseimg" src="https://s2.ax1x.com/2019/08/15/mVaKaV.png" alt="视频封面" />
@@ -58,7 +73,23 @@
     <p class="course coursetitle">第一节图形化编程公开课</p>
     <p class="course coursedescript">什么是Scratch？</p>
     <p class="course coursetime">2:26 | 斯坦福大学</p>
+    <div class="courseboard">
+      <div class="courseboard-line" />
+    </div>
   </div>
+
+  <div class="courseitem">
+    <div class="coursevideo">
+        <img class="courseimg" src="https://s2.ax1x.com/2019/08/15/mVaKaV.png" alt="视频封面" />
+    </div>
+    <p class="course coursetitle">第一节图形化编程公开课</p>
+    <p class="course coursedescript">什么是Scratch？</p>
+    <p class="course coursetime">2:26 | 斯坦福大学</p>
+    <div class="courseboard">
+      <div class="courseboard-line" />
+    </div>
+  </div>
+</div>
 </template>
 <script>
   import wepy from '@wepy/core';
