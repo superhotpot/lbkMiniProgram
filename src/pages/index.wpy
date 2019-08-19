@@ -15,7 +15,7 @@
     <div class="list">
       <div v-for="item in courses_list">
         <div class="course-item">
-          {{item}}
+          <courseitem></courseitem>
         </div>
       </div>
     </div>
@@ -78,6 +78,7 @@
     navigationBarTitleText: '编程小神通',
     usingComponents: {
       topbar: '../components/topbar',
+      courseitem: '../components/courseitem',
     },
 }
 </config>
