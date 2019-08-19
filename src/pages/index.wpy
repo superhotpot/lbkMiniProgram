@@ -13,9 +13,9 @@
       <topbar v-bind:tabs="tabs" v-bind:value="currentTab"></topbar>
     </div>
     <div class="list">
-      <div v-for="item in courses_list">
+      <div v-for="(item, key) in courses_list">
         <div class="course-item">
-          <courseitem></courseitem>
+          <courseitem v-bind:title="item"></courseitem>
         </div>
       </div>
     </div>
@@ -53,13 +53,19 @@
     },
 
     methods: {
+         
     },
-    // onPullDownRefresh() {
-    //   console.log('下拉刷新列表')
-    //   setTimeout(function () {
-    //     wepy.stopPullDownRefresh()
-    //   }, 5000)
-    // },
+    onPageScroll: function(event) {
+    // 页面滚动时执行
+      // const current_scroll_top = event.scrollTop;
+      // let range_top = event.scrollTop - 10  *  10; // height
+      // range_top = range_top > 0 ? range_top : 0;
+      // let range_bottom = event.scrollTop  + 10 * 10;
+      // const top_index = Math.floor(range_top / 10);
+      // const bottom_index = Math.floor(range_bottom / 10);
+      // this.show_courses = this.courses_list.slice(top_index, bottom_index);
+      // this.scroll_top = event.scrollTop;
+    },
     onReachBottom() {
       console.log('上拉加载下一页');
       var arr = this.courses_list;
