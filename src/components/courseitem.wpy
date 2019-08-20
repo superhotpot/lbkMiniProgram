@@ -3,7 +3,6 @@
     position: relative;
     width: 750rpx;
     height: 208rpx;
-    top: 80rpx;
 }
 .courseboard {
     display: flex;
@@ -70,19 +69,7 @@
     <div class="coursevideo">
         <img class="courseimg" src="https://s2.ax1x.com/2019/08/15/mVaKaV.png" alt="视频封面" />
     </div>
-    <p class="course coursetitle">第一节图形化编程公开课</p>
-    <p class="course coursedescript">什么是Scratch？</p>
-    <p class="course coursetime">2:26 | 斯坦福大学</p>
-    <div class="courseboard">
-      <div class="courseboard-line" />
-    </div>
-  </div>
-
-  <div class="courseitem">
-    <div class="coursevideo">
-        <img class="courseimg" src="https://s2.ax1x.com/2019/08/15/mVaKaV.png" alt="视频封面" />
-    </div>
-    <p class="course coursetitle">第一节图形化编程公开课</p>
+    <p class="course coursetitle">第{{title}}节图形化编程公开课</p>
     <p class="course coursedescript">什么是Scratch？</p>
     <p class="course coursetime">2:26 | 斯坦福大学</p>
     <div class="courseboard">
@@ -96,7 +83,7 @@
 
   wepy.component({
     props: {
-      gitem: {}
+      title: {},
     },
     data: {
     },
