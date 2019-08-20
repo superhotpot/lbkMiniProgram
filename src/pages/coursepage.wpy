@@ -1,0 +1,31 @@
+<style lang="less">
+
+</style>
+
+<template>
+  <div class="container">
+    <div>
+      <course class="course"></course>
+    </div>
+  </div>
+</template>
+
+<script>
+  import wepy from '@wepy/core'
+  import eventHub from '../common/eventHub';
+  import { mapState } from '@wepy/redux';
+  import store from '../store';
+  import testMixin from '../mixins/test'
+
+  wepy.page({
+
+  });
+</script>
+<config>
+{
+    navigationBarTitleText: '课程详情',
+    usingComponents: {
+      courseitem: '../components/course',
+    },
+}
+</config>
