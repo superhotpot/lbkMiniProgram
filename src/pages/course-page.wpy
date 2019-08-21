@@ -1,0 +1,85 @@
+<style lang="less">
+.course-img {
+  width:750rpx;
+  height:382rpx;
+}
+.course-menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width:750rpx;
+  height:94rpx;
+  background:rgba(250,250,250,1);
+}
+.course-menu-font {
+  width:300rpx;
+  height:40rpx;
+  font-size:28rpx;
+  font-family:PingFangSC;
+  font-weight:500;
+  color:rgba(26,173,25,1);
+  line-height:40rpx;
+}
+.course-menu-time {
+  width:200rpx;
+  height:37rpx;
+  font-size:26rpx;
+  font-family:PingFangSC;
+  font-weight:500;
+  color:rgba(26,173,25,1);
+  line-height:37rpx;
+}
+.course-title {
+  margin: 35rpx 65rpx 9rpx 65rpx;
+  font-size:34rpx;
+  font-family:PingFangSC;
+  font-weight:400;
+  color:rgba(34,34,34,1);
+  line-height:48rpx;
+}
+.course-descript {
+  margin-left: 65rpx;
+  margin-right: 65rpx;
+  font-size:26rpx;
+  font-family:PingFangSC;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  line-height:37px;
+}
+</style>
+
+<template>
+  <div class="course-item">
+    <div class="course-video">
+        <img class="course-img" src="https://s2.ax1x.com/2019/08/15/mVaKaV.png" alt="视频封面" />
+    </div>
+    <div class="course-menu">
+      <p class="course-menu-font">视频介绍</p>
+      <p class="course-menu-time">时长 2:26</p>
+    </div>
+    <div class="course-content">
+      <p class="course-title">第节图形化编程公开课</p>
+      <p class="course-descript">Scratch是麻省理工学院的“终身幼儿园团队”（Lifelong Kindergarten Group）开发的图形化编程工具，主要面对青少年开放。
+目前已有原始版本（1.4版本）、2.0版本（增加克隆积木，Lego和Makey makey拓展积木）、3.0版本（增加视频侦测、文字朗读、翻译等选择性下载扩展积木，并增加micro：bit和Lego mindstorms EV3拓展积木）所有人可以在任意版本中创作自己的程序。</p>
+    </div>
+  </div>
+</template>
+
+<script>
+  import wepy from '@wepy/core'
+  import eventHub from '../common/eventHub';
+  import { mapState } from '@wepy/redux';
+  import store from '../store';
+  import testMixin from '../mixins/test'
+
+  wepy.page({
+
+  });
+</script>
+<config>
+{
+    navigationBarTitleText: '课程详情',
+    usingComponents: {
+    },
+}
+</config>

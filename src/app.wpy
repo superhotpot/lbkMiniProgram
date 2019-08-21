@@ -59,7 +59,7 @@ wepy.app({
 {
     pages: [
       'pages/index',
-      'pages/example'
+      'pages/course-page',
     ],
     window: {
       backgroundTextStyle: 'light',
