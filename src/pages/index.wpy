@@ -10,12 +10,17 @@
 <template>
   <div class="container">
     <div class="topbar">
-      <topbar v-bind:tabs="tabs" v-bind:value="currentTab"></topbar>
+      <topbar tabs="{{tabs}}" value="{{currentTab}}"></topbar>
     </div>
     <div class="list">
       <div v-for="(item, key) in courses_list" v-bind:key="key">
         <div class="course-item">
-          <courseitem v-bind:title="item"></courseitem>
+          <courseitem 
+             title="第{{item}}节图形化编程公开课"
+             description="什么是Scratch？"
+             duration="2:26"
+             source="斯坦福大学"
+          />
         </div>
       </div>
     </div>

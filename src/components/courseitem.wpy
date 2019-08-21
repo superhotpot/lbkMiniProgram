@@ -65,13 +65,13 @@
 </style>
 <template>
 <div>
-  <div class="courseitem">
+  <div class="courseitem" @tap="tap">
     <div class="coursevideo">
         <img class="courseimg" src="https://s2.ax1x.com/2019/08/15/mVaKaV.png" alt="视频封面" />
     </div>
-    <p class="course coursetitle">第{{title}}节图形化编程公开课</p>
-    <p class="course coursedescript">什么是Scratch？</p>
-    <p class="course coursetime">2:26 | 斯坦福大学</p>
+    <p class="course coursetitle">{{title}}</p>
+    <p class="course coursedescript">{{description}}</p>
+    <p class="course coursetime">{{duration}} | {{source}}</p>
     <div class="courseboard">
       <div class="courseboard-line" />
     </div>
@@ -83,21 +83,18 @@
 
   wepy.component({
     props: {
-      title: {},
+      title: String,
+      description: String,
+      duration: String,
+      source: String,
     },
     data: {
     },
     methods: {
       tap () {
-        this.gitem.childname = `Child Random(${Math.random()})`
-        let index = this.$parent.$children.indexOf(this);
-        console.log(`Item ${index}, ID is ${this.gitem.childid}`)
-      },
-      tapCourse() {
-        //window.open("http://www.runoob.com")
-        wx.redirectTo({
-          url:"http://www.runoob.com",
-        })
+        wx.navigateTo({
+          url: 'course-page',
+        });
       }
     }
   });
