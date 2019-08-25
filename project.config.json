@@ -1,5 +1,6 @@
 {
 	"description": "A WePY project",
+	"cloudfunctionRoot": "cloudfunctions/",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
@@ -8,7 +9,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"appid": "wx3fb8c5907f9fa493",
+	"appid": "",
 	"projectname": "lbk_app",
 	"miniprogramRoot": "weapp/",
 	"simulatorType": "wechat",
