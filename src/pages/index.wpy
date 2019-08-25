@@ -16,10 +16,10 @@
       <div v-for="(item, key) in courses_list">
         <div class="course-item">
           <courseitem 
-             title="第{{item}}节图形化编程公开课"
-             description="什么是Scratch？"
-             duration="2:26"
-             source="斯坦福大学"
+             title="{{item.name}}"
+             description="{{item.description}}"
+             duration="{{item.duration}}"
+             source="{{item.source}}"
           />
         </div>
       </div>
@@ -54,11 +54,29 @@
           title: '计算机基础'
         },
       ],
-      courses_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      courses_list: [],
     },
 
     methods: {
          
+    },
+    onLoad: function () {
+      const that = this;
+      wx.cloud.callFunction({
+      // 云函数名称
+        name: 'get_courses',
+        // 传给云函数的参数
+        data: {
+          a: 1,
+          b: 2,
+        },
+        success: function(res) {
+          console.log('coursr_list', res.result.data) // 3
+          console.log('that', that.courses_list);
+          that.courses_list = res.result.data;
+        },
+        fail: console.error
+      })
     },
     onPageScroll: function(event) {
     // 页面滚动时执行
@@ -73,13 +91,13 @@
     },
     onReachBottom() {
       console.log('上拉加载下一页');
-      var arr = this.courses_list;
-      var index = this.courses_list.length;
-      for (let i = index + 1; i <= index + 10; i ++) {
-        console.log(i)
-        arr.push(i);
-      }
-      this.courses_list = arr.slice();
+      // var arr = this.courses_list;
+      // var index = this.courses_list.length;
+      // for (let i = index + 1; i <= index + 10; i ++) {
+      //   console.log(i)
+      //   arr.push(i);
+      // }
+      // this.courses_list = arr.slice();
     }
   });
     
