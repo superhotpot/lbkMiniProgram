@@ -13,7 +13,7 @@
       <topbar tabs="{{tabs}}" value="{{currentTab}}"></topbar>
     </div>
     <div class="list">
-      <div v-for="(item, key) in courses_list">
+      <div v-for="(item, key) in courses_list" v-bind:key="key">
         <div class="course-item">
           <courseitem 
              title="{{item.name}}"
