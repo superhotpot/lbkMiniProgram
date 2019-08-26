@@ -10,7 +10,7 @@
 <template>
   <div class="container">
     <div class="topbar">
-      <topbar tabs="{{tabs}}" value="{{currentTab}}"></topbar>
+      <topbar tabs="{{tabs}}" @change-tab-emit.user="fetchCourses" value.sync="{{currentTab}}"></topbar>
     </div>
     <div class="list">
       <div v-for="(item, key) in courses_list" v-bind:key="key">
@@ -56,27 +56,26 @@
       ],
       courses_list: [],
     },
-
     methods: {
-         
+      fetchCourses: function(tab) {
+          console.log('fetchCourses', tab)
+          const that = this;
+          wx.cloud.callFunction({
+          // 云函数名称
+            name: 'get_courses',
+            // 传给云函数的参数
+            data: {
+              tab_id: tab, // 1: 热门 2: 图形化编程 3: 计算机基础
+            },
+            success: function(res) {
+              that.courses_list = res.result.data;
+            },
+            fail: console.error
+          })
+      }
     },
     onLoad: function () {
-      const that = this;
-      wx.cloud.callFunction({
-      // 云函数名称
-        name: 'get_courses',
-        // 传给云函数的参数
-        data: {
-          a: 1,
-          b: 2,
-        },
-        success: function(res) {
-          console.log('coursr_list', res.result.data) // 3
-          console.log('that', that.courses_list);
-          that.courses_list = res.result.data;
-        },
-        fail: console.error
-      })
+      this.fetchCourses(this.currentTab);
     },
     onPageScroll: function(event) {
     // 页面滚动时执行

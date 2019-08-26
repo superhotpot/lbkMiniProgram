@@ -24,7 +24,7 @@
   <div v-for="item in tabs">
     <div class="topbar_item" 
         :class="{ 'active': value === item.id }"
-        @tap="value = item.id"
+        @tap="handletap(item.id)"
         >{{item.title}}
     </div>
   </div>
@@ -41,8 +41,15 @@
         type: Number,
         twoWay: true
       },
+      tap: Function,
     },
     data: {},
-    methods: {},
+    methods: {
+      handletap: function(tabid) {
+        console.log('tabid', tabid);
+        this.value = tabid;
+        this.$emit('change-tab-emit', tabid);
+      }
+    },
   });
 </script>
