@@ -47,7 +47,7 @@
 <template>
   <div class="course-item">
     <div class="course-video">
-        <img class="course-img" src="{{course.img_url}}" alt="视频封面" />
+        <video class="course-img" id="myVideo" src="{{course.video_url}}" show-progress	></video>
     </div>
     <div class="course-menu">
       <p class="course-menu-font">视频介绍</p>
@@ -61,11 +61,12 @@
 </template>
 
 <script>
-  import wepy from '@wepy/core'
+  import wepy from '@wepy/core';
   import eventHub from '../common/eventHub';
   import { mapState } from '@wepy/redux';
   import store from '../store';
-  import testMixin from '../mixins/test'
+  import testMixin from '../mixins/test';
+  import {secondsToduration} from '../utils/string.js';
 
   wepy.page({
     data: {
@@ -83,6 +84,7 @@
             },
             success: function(res) {
               that.course = res.result.data[0];
+              that.course.duration = secondsToduration(that.course.duration);
             },
             fail: console.error
           })
