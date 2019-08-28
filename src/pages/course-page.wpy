@@ -47,29 +47,52 @@
 <template>
   <div class="course-item">
     <div class="course-video">
-        <img class="course-img" src="https://s2.ax1x.com/2019/08/15/mVaKaV.png" alt="视频封面" />
+        <video class="course-img" id="myVideo" src="{{course.video_url}}" show-progress	></video>
     </div>
     <div class="course-menu">
       <p class="course-menu-font">视频介绍</p>
-      <p class="course-menu-time">时长 2:26</p>
+      <p class="course-menu-time">时长 {{course.duration}}</p>
     </div>
     <div class="course-content">
-      <p class="course-title">第节图形化编程公开课</p>
-      <p class="course-descript">Scratch是麻省理工学院的“终身幼儿园团队”（Lifelong Kindergarten Group）开发的图形化编程工具，主要面对青少年开放。
-目前已有原始版本（1.4版本）、2.0版本（增加克隆积木，Lego和Makey makey拓展积木）、3.0版本（增加视频侦测、文字朗读、翻译等选择性下载扩展积木，并增加micro：bit和Lego mindstorms EV3拓展积木）所有人可以在任意版本中创作自己的程序。</p>
+      <p class="course-title">{{course.name}}</p>
+      <p class="course-descript">{{course.description}}</p>
     </div>
   </div>
 </template>
 
 <script>
-  import wepy from '@wepy/core'
+  import wepy from '@wepy/core';
   import eventHub from '../common/eventHub';
   import { mapState } from '@wepy/redux';
   import store from '../store';
-  import testMixin from '../mixins/test'
+  import testMixin from '../mixins/test';
+  import {secondsToduration} from '../utils/string.js';
 
   wepy.page({
-
+    data: {
+      course: {},
+    },
+    methods: {
+      fetchCourseById: function(tabid) {
+          const that = this;
+          wx.cloud.callFunction({
+          // 云函数名称
+            name: 'getCourseById',
+            // 传给云函数的参数
+            data: {
+              tabid, 
+            },
+            success: function(res) {
+              that.course = res.result.data[0];
+              that.course.duration = secondsToduration(that.course.duration);
+            },
+            fail: console.error
+          })
+      }
+    },
+    onLoad: function(options) {
+      this.fetchCourseById(options.id)
+    },
   });
 </script>
 <config>

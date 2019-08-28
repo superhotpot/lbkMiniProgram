@@ -87,13 +87,14 @@
       description: String,
       duration: String,
       source: String,
+      tabid: String,
     },
     data: {
     },
     methods: {
       tap () {
         wx.navigateTo({
-          url: 'course-page',
+          url: `course-page?id=${this.tabid}`, 
         });
       }
     }

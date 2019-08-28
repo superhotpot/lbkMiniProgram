@@ -20,6 +20,7 @@
              description="{{item.description}}"
              duration="{{item.duration}}"
              source="{{item.source}}"
+             tabid="{{item._id}}"
           />
         </div>
       </div>
@@ -58,11 +59,10 @@
     },
     methods: {
       fetchCourses: function(tab) {
-          console.log('fetchCourses', tab)
           const that = this;
           wx.cloud.callFunction({
           // 云函数名称
-            name: 'get_courses',
+            name: 'getCourses',
             // 传给云函数的参数
             data: {
               tab_id: tab, // 1: 热门 2: 图形化编程 3: 计算机基础
